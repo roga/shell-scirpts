@@ -1,0 +1,15 @@
+#!/bin/sh
+# get current timestamp or convert timestamp to date
+
+UNAME=`uname`
+
+if [ "$1" == "" ]; then
+    TS=`date +"%s"`
+    echo "current timestamp is: ${TS}"
+elif [ $UNAME = 'Darwin' ]; then
+    DA=`date -r $1`
+    echo "current date is: ${DA}"
+else
+    DA=`date -d @$1`
+    echo "current date is: ${DA}"
+fi
